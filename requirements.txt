@@ -1,0 +1,10 @@
+# MCP Core Server Infrastructure
+mcp>=1.0.0
+fastmcp>=0.4.0
+
+# Data Manipulation & Analytical Engine utils
+pandas>=2.0.0
+
+# Structural Compliance Engine helper (for advanced datetime parsing/holidays)
+python-dateutil>=2.8.2
+
