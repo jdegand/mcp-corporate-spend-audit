@@ -70,4 +70,5 @@ htmlcov/
 .DS_Store
 Thumbs.db
 
-data/corporate_card_transactions.json
+data/*
+!data/data_sample.py

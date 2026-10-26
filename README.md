@@ -37,7 +37,7 @@ Navigate to your preferred directory, clone the project folder, and spin up an i
 
   ```bash
   cd mcp-corporate-spend-audit
-  python -bin/venv venv             # Use 'python' or 'python3' based on OS
+  python -m venv venv          # Use 'python' or 'python3' based on OS
   source venv/bin/activate          # On Windows use: venv\Scripts\activate
   ```
 
