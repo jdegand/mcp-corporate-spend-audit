@@ -71,4 +71,4 @@ htmlcov/
 Thumbs.db
 
 data/*
-!data/data_sample.py
+!data/data_sample.json
