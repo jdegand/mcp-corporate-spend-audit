@@ -113,13 +113,7 @@ Open your `claude_desktop_config.json` and append the following server key under
 
 > **Pro-Tip:** Completely quit Claude Desktop (via the Mac menu bar or Windows tray) and launch it fresh to let the client build your active tool map. Look for the small plug icon or hammer tool inside the text input container to begin asking compliance questions!
 
-### Manual Testing
-
-```bash
-npx @modelcontextprotocol/inspector python server.py
-```
-
-### Verification Checklist
+### Manual Testing Verification Checklist
 
 Here is your complete verification checklist to systematically test the MCP server using the @modelcontextprotocol/inspector web interface.
 Apply these steps in order to guarantee that your compliance thresholds, financial aggregators, and dynamic data profiling methods operate flawlessly before attaching the server to an LLM client like Claude Desktop.
