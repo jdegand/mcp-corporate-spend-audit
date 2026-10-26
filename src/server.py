@@ -1,6 +1,7 @@
 import os
 import sys
-import json  # Added missing json import required for inspecting data
+import json
+from typing import Optional
 from mcp.server.mcpserver import MCPServer
 
 # Ensure the root project directory is added to Python path for seamless relative importing
@@ -56,15 +57,8 @@ def get_daily_velocity_alerts(max_transactions: int = 3) -> list:
 
 
 @server.tool()
-def check_mcc_blacklist(forbidden_categories: list = None) -> list:
-    """
-    Cross-checks corporate transactions against an explicit array of blacklisted or high-risk 
-    Merchant Category Codes (MCCs).
-    
-    Args:
-        forbidden_categories (list, optional): Specific phrases to block (e.g., ["Casino", "Restricted"]).
-                                               Defaults to a built-in risk array if empty.
-    """
+def check_mcc_blacklist(forbidden_categories: list | None = None) -> list:
+    """Cross-checks corporate transactions against blacklisted MCCs, defaulting to None safely."""
     engine = get_compliance_engine()
     return engine.detect_mcc_blacklist_matches(blacklist=forbidden_categories)
 
