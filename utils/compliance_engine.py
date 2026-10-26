@@ -117,7 +117,7 @@ if __name__ == "__main__":
     engine = ComplianceEngine("data/corporate_card_transactions.json")
     all_alerts = engine.run_all_checks()
     
-    print(f"--- COMPLIANCE ENGINE RUN RESULT ---")
+    print("--- COMPLIANCE ENGINE RUN RESULT ---")
     print(f"Daily Velocity Violations: {len(all_alerts['daily_velocity_violations'])}")
     print(f"MCC Blacklist Matches Found: {len(all_alerts['mcc_blacklist_alerts'])}")
     print(f"Split Transactions Found: {len(all_alerts['split_transactions'])}")
