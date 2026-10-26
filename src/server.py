@@ -158,8 +158,9 @@ def inspect_data_dictionary() -> dict:
         sample_record = records[0]
         live_schema = {key: type(value).__name__ for key, value in sample_record.items()}
         
-        distinct_categories = sorted(list(set(r.get("category") for r in records if r.get("category"))))
-        distinct_statuses = sorted(list(set(r.get("status") for r in records if r.get("status"))))
+        # Replaced set constructor calls with set comprehensions and optimized sorting
+        distinct_categories = sorted({r.get("category") for r in records if r.get("category")})
+        distinct_statuses = sorted({r.get("status") for r in records if r.get("status")})
         
         return {
             "database_file": DATA_PATH,
