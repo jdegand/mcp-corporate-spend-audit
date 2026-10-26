@@ -70,8 +70,8 @@ class SavingsAnalyzer:
         vendor_counts = self.df.groupby('category')['vendor'].nunique().reset_index()
         vendor_counts.columns = ['category', 'unique_vendor_count']
 
-        # Merge summary metrics
-        summary = pd.merge(category_spend, vendor_counts, on='category')
+        # Merge summary metrics safely with explicit structural enforcement
+        summary = pd.merge(category_spend, vendor_counts, on='category', how='inner', validate='1:1')
         
         # Filter out 'Restricted' categories as they shouldn't be optimized/consolidated
         summary = summary[summary['category'].str.lower() != 'restricted']
@@ -80,7 +80,8 @@ class SavingsAnalyzer:
         top_vendors = vendor_spend.sort_values(['category', 'amount'], ascending=[True, False]).groupby('category').first().reset_index()
         top_vendors.columns = ['category', 'top_vendor', 'top_vendor_spend']
         
-        summary = pd.merge(summary, top_vendors, on='category')
+        # Merge top vendors metrics safely with explicit structural enforcement
+        summary = pd.merge(summary, top_vendors, on='category', how='inner', validate='1:1')
 
         opportunities = []
         # Process categories showing fragmentation (more than 1 vendor)
