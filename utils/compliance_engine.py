@@ -1,4 +1,5 @@
 import json
+from typing import Optional, List, Dict, Any
 import pandas as pd
 from datetime import datetime
 
@@ -45,7 +46,7 @@ class ComplianceEngine:
         violations = self.df[velocity_counts > max_transactions_per_day]
         return violations.drop(columns=['date_only']).to_dict(orient='records')
 
-    def detect_mcc_blacklist_matches(self, blacklist: list = None) -> list:
+    def detect_mcc_blacklist_matches(self, blacklist: Optional[List[str]] = None) -> list:
         """
         UPDATED: Enforces explicit MCC blacklist matching.
         Cross-checks corporate transactions against an array of forbidden 

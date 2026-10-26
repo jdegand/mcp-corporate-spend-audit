@@ -1,7 +1,7 @@
 import os
 import sys
 import json
-from typing import Optional
+from typing import Optional, List
 from mcp.server.mcpserver import MCPServer
 
 # Ensure the root project directory is added to Python path for seamless relative importing
@@ -57,8 +57,13 @@ def get_daily_velocity_alerts(max_transactions: int = 3) -> list:
 
 
 @server.tool()
-def check_mcc_blacklist(forbidden_categories: list | None = None) -> list:
-    """Cross-checks corporate transactions against blacklisted MCCs, defaulting to None safely."""
+def check_mcc_blacklist(forbidden_categories: Optional[List[str]] = None) -> list:
+    """
+    Cross-checks corporate transactions against blacklisted MCCs.
+    
+    Args:
+        forbidden_categories (list, optional): Custom list of category strings to verify. Defaults to None.
+    """
     engine = get_compliance_engine()
     return engine.detect_mcc_blacklist_matches(blacklist=forbidden_categories)
 
